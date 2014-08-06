@@ -130,6 +130,7 @@ THREE.UnsignedShortType = 1012;
 THREE.IntType = 1013;
 THREE.UnsignedIntType = 1014;
 THREE.FloatType = 1015;
+THREE.HalfFloatType = 2200;
 
 // Pixel types
 
@@ -18933,6 +18934,8 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 	var _glExtensionTextureFloat;
 	var _glExtensionTextureFloatLinear;
+	var _glExtensionTextureHalf;
+	var _glExtensionTextureHalfLinear;
 	var _glExtensionStandardDerivatives;
 	var _glExtensionTextureFilterAnisotropic;
 	var _glExtensionCompressedTextureS3TC;
@@ -24901,6 +24904,7 @@ THREE.WebGLRenderer = function ( parameters ) {
 		if ( p === THREE.IntType ) return _gl.INT;
 		if ( p === THREE.UnsignedIntType ) return _gl.UNSIGNED_INT;
 		if ( p === THREE.FloatType ) return _gl.FLOAT;
+		if ( p === THREE.HalfFloatType ) return 0x8D61;
 
 		if ( p === THREE.AlphaFormat ) return _gl.ALPHA;
 		if ( p === THREE.RGBFormat ) return _gl.RGB;
@@ -25053,6 +25057,8 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 		_glExtensionTextureFloat = _gl.getExtension( 'OES_texture_float' );
 		_glExtensionTextureFloatLinear = _gl.getExtension( 'OES_texture_float_linear' );
+		_glExtensionTextureHalf = _gl.getExtension( 'OES_texture_half_float' );
+		_glExtensionTextureHalfLinear = _gl.getExtension( 'OES_texture_half_float_linear' );
 		_glExtensionStandardDerivatives = _gl.getExtension( 'OES_standard_derivatives' );
 
 		_glExtensionTextureFilterAnisotropic = _gl.getExtension( 'EXT_texture_filter_anisotropic' ) || _gl.getExtension( 'MOZ_EXT_texture_filter_anisotropic' ) || _gl.getExtension( 'WEBKIT_EXT_texture_filter_anisotropic' );
