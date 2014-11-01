@@ -149,6 +149,7 @@ THREE.UnsignedShortType = 1012;
 THREE.IntType = 1013;
 THREE.UnsignedIntType = 1014;
 THREE.FloatType = 1015;
+THREE.HalfFloatType = 2200;
 
 // Pixel types
 
@@ -17900,7 +17901,9 @@ THREE.WebGLRenderer = function ( parameters ) {
 	var extensions = new THREE.WebGLExtensions( _gl );
 
 	extensions.get( 'OES_texture_float' );
-	extensions.get( 'OES_texture_float_linear' );
+        extensions.get( 'OES_texture_float_linear' );
+        extensions.get( 'OES_texture_half_float' );
+    	extensions.get( 'OES_texture_half_float_linear' );
 	extensions.get( 'OES_standard_derivatives' );
 
 	if ( _logarithmicDepthBuffer ) {
@@ -18042,6 +18045,12 @@ THREE.WebGLRenderer = function ( parameters ) {
 	this.supportsFloatTextures = function () {
 
 		return extensions.get( 'OES_texture_float' );
+
+	};
+
+        this.supportsHalfFloatTextures = function () {
+
+		return extensions.get( 'OES_texture_half_float' );
 
 	};
 
@@ -23945,7 +23954,8 @@ THREE.WebGLRenderer = function ( parameters ) {
 		if ( p === THREE.UnsignedShortType ) return _gl.UNSIGNED_SHORT;
 		if ( p === THREE.IntType ) return _gl.INT;
 		if ( p === THREE.UnsignedIntType ) return _gl.UNSIGNED_INT;
-		if ( p === THREE.FloatType ) return _gl.FLOAT;
+	        if ( p === THREE.FloatType ) return _gl.FLOAT;
+                if ( p === THREE.HalfFloatType ) return 0x8D61;
 
 		if ( p === THREE.AlphaFormat ) return _gl.ALPHA;
 		if ( p === THREE.RGBFormat ) return _gl.RGB;
