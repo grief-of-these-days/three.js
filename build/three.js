@@ -24100,6 +24100,8 @@ THREE.WebGLRenderer = function ( parameters ) {
 	}
 
 	// DEPRECATED
+		_glExtensionTextureHalf = _gl.getExtension( 'OES_texture_half_float' );
+		_glExtensionTextureHalfLinear = _gl.getExtension( 'OES_texture_half_float_linear' );
 	
 	this.initMaterial = function () {
 

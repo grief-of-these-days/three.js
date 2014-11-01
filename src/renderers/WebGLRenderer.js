@@ -182,6 +182,8 @@ THREE.WebGLRenderer = function ( parameters ) {
 	var _gl;
 
 	try {
+	var _glExtensionTextureHalf;
+	var _glExtensionTextureHalfLinear;
 
 		var attributes = {
 			alpha: _alpha,
@@ -6277,6 +6279,7 @@ THREE.WebGLRenderer = function ( parameters ) {
 		if ( p === THREE.IntType ) return _gl.INT;
 		if ( p === THREE.UnsignedIntType ) return _gl.UNSIGNED_INT;
 		if ( p === THREE.FloatType ) return _gl.FLOAT;
+		if ( p === THREE.HalfFloatType ) return 0x8D61;
 
 		if ( p === THREE.AlphaFormat ) return _gl.ALPHA;
 		if ( p === THREE.RGBFormat ) return _gl.RGB;
@@ -6418,6 +6421,8 @@ THREE.WebGLRenderer = function ( parameters ) {
 
 		return maxShadows;
 
+		_glExtensionTextureHalf = _gl.getExtension( 'OES_texture_half_float' );
+		_glExtensionTextureHalfLinear = _gl.getExtension( 'OES_texture_half_float_linear' );
 	}
 
 	// DEPRECATED
